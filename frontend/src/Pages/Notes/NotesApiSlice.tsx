@@ -1,4 +1,4 @@
-import { createEntityAdapter } from "@reduxjs/toolkit";
+import { createEntityAdapter, createSelector } from "@reduxjs/toolkit";
 import { apiSlice } from "../../app/api/apiSlice";
 import { v4 as uuid } from "uuid";
 
@@ -75,3 +75,18 @@ export const {
   useDeleteSpecificNoteMutation,
   useEditSpecificNoteMutation,
 } = notesApiSlice;
+
+export const selectNotesResult = notesApiSlice.endpoints.getAllNotes.select();
+
+const selectNotesData = createSelector(
+  selectNotesResult,
+  (notesResult) => notesResult
+);
+
+export const {
+  selectAll: selectAllNotes,
+  selectById: selectNotesById,
+  selectIds: selectNotesIds,
+} = notesAdapter.getSelectors(
+  (state) => selectNotesData(state) ?? initialState
+);

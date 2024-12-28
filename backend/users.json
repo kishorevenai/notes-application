@@ -81,13 +81,11 @@
       "password": "$2b$10$7y36tDTnAKRh5yobFxT50OiocelDoqSfgfhM9DbQbvyW6KJjvLBYK",
       "notes": [
         {
-          "id": "895a4b7d-5bb3-4fa1-9385-fcac97e5a582",
-          "title": "Gym",
-          "body": "Go to the gym and eat healthy , workout good and be fit.Fight for your self.",
+          "id": "80c9d5ba-1717-46ab-8a83-23f528350e98",
+          "title": "asdasd",
+          "body": "asdasd",
           "tags": [
-            "10:30",
-            "11:30",
-            "12:30"
+            "asdasd"
           ]
         }
       ]

@@ -4,6 +4,7 @@ import editIcon from "../../assets/editIcon.svg";
 import { Link } from "react-router-dom";
 import { useDeleteSpecificNoteMutation } from "./NotesApiSlice";
 import useAuth from "../../hook/useAuth";
+import { useMemo } from "react";
 
 const ShowAllNotes = ({ notes }: { notes: Addnote[] }) => {
   let content;
@@ -21,6 +22,9 @@ const ShowAllNotes = ({ notes }: { notes: Addnote[] }) => {
 
 const NoteCard = ({ note, noteId }) => {
   const authDetails: User = useAuth();
+
+  useMemo(() => {}, [noteId]);
+
   const [deleteSpecificNote, { isLoading, isSuccess }] =
     useDeleteSpecificNoteMutation();
 
