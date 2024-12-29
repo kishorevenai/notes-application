@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import useAuth from "../hook/useAuth";
 import { User } from "../types";
 import { useNavigate } from "react-router-dom";
