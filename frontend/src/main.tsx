@@ -7,13 +7,13 @@ import { store } from "./app/store.tsx";
 import { Provider } from "react-redux";
 
 createRoot(document.getElementById("root")!).render(
-  <StrictMode>
-    <Provider store={store}>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/*" element={<App />}></Route>
-        </Routes>
-      </BrowserRouter>
-    </Provider>
-  </StrictMode>
+  // <StrictMode>
+  <Provider store={store}>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/*" element={<App />}></Route>
+      </Routes>
+    </BrowserRouter>
+  </Provider>
+  // </StrictMode>
 );

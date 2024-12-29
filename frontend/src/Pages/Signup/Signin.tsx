@@ -4,43 +4,51 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { setUserCredentials } from "../Login/authSlice";
 import { useDispatch } from "react-redux";
+import { notification } from "antd";
 
 const Signin = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [api, contextHolder] = notification.useNotification();
+
+  const openNotification = (message: string, type: string) => {
+    //@ts-ignore
+    api[type]({
+      message,
+    });
+  };
 
   const [credentials, setCredentials] = useState({
     email: "",
     password: "",
   });
 
-  const [login, { isLoading, isSuccess, isError, error }] = useLoginMutation();
+  const [login, { data, isLoading, isSuccess, isError, error }] =
+    useLoginMutation();
 
   const handle_login = async (e: any) => {
     e.preventDefault();
 
     try {
-      const { data } = await login({
+      const data = await login({
         email: credentials.email,
         password: credentials.password,
-      });
+      }).unwrap();
 
       console.log(data);
 
       dispatch(setUserCredentials({ accessToken: data }));
-    } catch (error) {
-      console.log(error);
+      navigate("/Notes");
+    } catch (error: any) {
+      if (error.status === 401) {
+        openNotification("Invalid Email and Password", "warning");
+      }
     }
   };
 
-  useEffect(() => {
-    if (isSuccess) {
-      navigate("/Notes");
-    }
-  }, [isSuccess]);
-
   return (
     <div className="h-screen flex justify-center items-center">
+      {contextHolder}
       <form
         onSubmit={handle_login}
         className="border flex flex-col justify-evenly items-center border-black w-3/12 min-w-[400px] h-[300px] rounded-[10px] shadow-xl"

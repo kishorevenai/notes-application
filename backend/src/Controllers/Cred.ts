@@ -8,7 +8,7 @@ import jwt from "jsonwebtoken";
 export const Signup = async (req: Request, res: Response) => {
   const { name, email, password }: SignUp = req.body;
 
-  const { data: users } = await await axios.get("http://localhost:3200/users");
+  const { data: users } = await axios.get("http://localhost:3200/users");
 
   const duplicate = users.some((eachUser: any) => {
     return eachUser.email == email;
@@ -56,11 +56,11 @@ export const LoginFunc = async (req: Request, res: Response) => {
 
   const user: User = data.find((eachUser: User) => eachUser.email == email);
 
-  if (!user) return res.json({ message: "No user found" }).status(400);
+  if (!user) return res.status(401).json({ message: "No user found" });
 
   const verifyUser = await bcrypt.compare(password, user.password);
 
-  if (!verifyUser) return res.json({ message: "Unauthorized" }).status(401);
+  if (!verifyUser) return res.status(401).json({ message: "Unauthorized" });
 
   const accessToken = jwt.sign(
     {
@@ -73,6 +73,7 @@ export const LoginFunc = async (req: Request, res: Response) => {
   const refreshToken = jwt.sign(
     {
       email,
+      id: user.id,
     },
     "samplehashtest",
     {

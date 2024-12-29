@@ -19,7 +19,7 @@ const bcrypt_1 = __importDefault(require("bcrypt"));
 const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 const Signup = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { name, email, password } = req.body;
-    const { data: users } = yield yield axios_1.default.get("http://localhost:3200/users");
+    const { data: users } = yield axios_1.default.get("http://localhost:3200/users");
     const duplicate = users.some((eachUser) => {
         return eachUser.email == email;
     });
@@ -57,15 +57,16 @@ const LoginFunc = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { data } = yield axios_1.default.get("http://localhost:3200/users");
     const user = data.find((eachUser) => eachUser.email == email);
     if (!user)
-        return res.json({ message: "No user found" }).status(400);
+        return res.status(401).json({ message: "No user found" });
     const verifyUser = yield bcrypt_1.default.compare(password, user.password);
     if (!verifyUser)
-        return res.json({ message: "Unauthorized" }).status(401);
+        return res.status(401).json({ message: "Unauthorized" });
     const accessToken = jsonwebtoken_1.default.sign({
         userDetail: user,
     }, "samplehash", { expiresIn: "15m" });
     const refreshToken = jsonwebtoken_1.default.sign({
         email,
+        id: user.id,
     }, "samplehashtest", {
         expiresIn: "7d",
     });

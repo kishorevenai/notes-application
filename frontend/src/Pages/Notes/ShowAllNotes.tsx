@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { useDeleteSpecificNoteMutation } from "./NotesApiSlice";
 import useAuth from "../../hook/useAuth";
 import { useMemo } from "react";
+import { notification } from "antd";
 
 const ShowAllNotes = ({ notes }: { notes: Addnote[] }) => {
   let content;
@@ -22,23 +23,46 @@ const ShowAllNotes = ({ notes }: { notes: Addnote[] }) => {
 
 const NoteCard = ({ note, noteId }) => {
   const authDetails: User = useAuth();
+  const [api, contextHolder] = notification.useNotification();
 
-  useMemo(() => {}, [noteId]);
+  const openNotification = (message: string, type: string) => {
+    //@ts-ignore
+    api[type]({
+      message,
+    });
+  };
+
+  const noteDetails = useMemo(() => {
+    return {
+      title: note.title.toUpperCase(),
+      body: note.body,
+    };
+  }, [note]);
 
   const [deleteSpecificNote, { isLoading, isSuccess }] =
     useDeleteSpecificNoteMutation();
 
   const handle_delete = async () => {
-    await deleteSpecificNote({
-      userId: authDetails.id,
-      noteId,
-    });
+    try {
+      await deleteSpecificNote({
+        userId: authDetails.id,
+        noteId,
+      });
+
+      openNotification("Deleted note successfully", "success");
+    } catch (error) {
+      openNotification("Unable to delete the note", "error");
+    }
   };
+
   return (
     <div className="w-11/12 h-fit relative mx-auto duration-150 border-2 rounded-xl px-5 py-1 mb-2 hover:shadow-xl">
+      {contextHolder}
       <div className="h-full absolute top-0 left-0 bg-black w-[10px] rounded-tl-[10px] rounded-bl-[10px]"></div>
       <div className="flex justify-between items-center mb-5">
-        <p className="text-[18px] font-bold">{note.title.toUpperCase()}</p>
+        <p className="text-[18px] font-bold">
+          {noteDetails.title.toUpperCase()}
+        </p>
 
         <div className="w-[80px] flex justify-between items-center">
           <Link to={`/note/${note.id}`} state={note}>
@@ -59,7 +83,7 @@ const NoteCard = ({ note, noteId }) => {
         disabled
         className="text-[13px] h-fit border-none rounded-[10px] pl-2 pt-2 w-full overflow-hidden border-2"
       >
-        {note.body}
+        {noteDetails.body}
       </textarea>
     </div>
   );
