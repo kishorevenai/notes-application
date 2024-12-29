@@ -1,20 +1,32 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Addnote, User } from "../../types";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { Select } from "antd";
-import { useEditSpecificNoteMutation } from "./NotesApiSlice";
+import {
+  useEditSpecificNoteMutation,
+  useGetSpecificNotesQuery,
+} from "./NotesApiSlice";
 import useAuth from "../../hook/useAuth";
 import { notification } from "antd";
 
 const EditNote = () => {
   const location = useLocation();
+
+  const { id } = useParams();
   const [api, contextHolder] = notification.useNotification();
   const navigate = useNavigate();
   const specificNote: Addnote = location.state;
+
   const authDetails: User = useAuth();
 
   const [editSpecificNote, { isLoading, isSuccess, isError, error }] =
     useEditSpecificNoteMutation();
+
+  const { data: Note, isSuccess: getSpecificNoteSuccess } =
+    useGetSpecificNotesQuery({
+      noteId: id,
+      userId: authDetails.id,
+    });
 
   const openNotification = (message: string, type: string) => {
     //@ts-ignore
@@ -24,11 +36,22 @@ const EditNote = () => {
   };
 
   const [noteDetail, setNoteDetail] = useState<Addnote>({
-    id: specificNote.id ?? "",
-    title: specificNote.title ?? "",
-    body: specificNote.body ?? "",
-    tags: specificNote.tags ?? [],
+    id: getSpecificNoteSuccess ? Note.id : "",
+    title: getSpecificNoteSuccess ? Note.title : "",
+    body: getSpecificNoteSuccess ? Note.body : "",
+    tags: getSpecificNoteSuccess ? Note.tags : [],
   });
+
+  useEffect(() => {
+    if (getSpecificNoteSuccess) {
+      setNoteDetail({
+        id: Note.id,
+        title: Note.title,
+        body: Note.body,
+        tags: Note.tags,
+      });
+    }
+  }, [getSpecificNoteSuccess]);
 
   const handleChange = (value: string) => {
     setNoteDetail((prev) => ({ ...prev, tags: [...value] }));

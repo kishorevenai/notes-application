@@ -40,6 +40,26 @@ export const AddNotes = async (req: Request, res: Response) => {
   }
 };
 
+export const getSpecificNote = async (req: Request, res: Response) => {
+  const { noteId, userId } = req.query;
+
+  console.log(noteId, "------------", userId);
+
+  try {
+    const specificNote = await axios.get(
+      `http://localhost:3200/users/${userId}`
+    );
+
+    const note = specificNote.data.notes.find((notes) => notes.id === noteId);
+
+    return res.status(200).json(note);
+  } catch (error) {
+    return res
+      .status(400)
+      .json({ message: "Unable to find the specific note." });
+  }
+};
+
 export const EditUsersNote = async (req: Request, res: Response) => {
   const { userId, notesId } = req.query;
   const result: Note = req.body;

@@ -75,55 +75,15 @@
       ]
     },
     {
-      "id": "6e4e46d6-cc59-46ef-93f9-9d00dc581ece",
-      "name": "kishorevenai",
-      "email": "kishorek@gmail.com",
-      "password": "$2b$10$7y36tDTnAKRh5yobFxT50OiocelDoqSfgfhM9DbQbvyW6KJjvLBYK",
+      "id": "7d3732b2-92f5-40cc-9ad6-7a14d8ffa7a8",
+      "name": "kishorek",
+      "email": "kishorevenai@gmail.com",
+      "password": "$2b$10$XFA0ALNR7oAwEG7kdgHHQuwOhz05/kHRzv8pnZckqJ2LHUdVu6UM6",
       "notes": [
         {
-          "id": "c9834536-debf-4cec-8a99-e666847407c7",
-          "title": "TESTING",
-          "body": "TESTING THE INTEGRATION PROCESS",
-          "tags": [
-            "TESTING",
-            "TESTING AGAIN",
-            "TESTING AGAIN AND AGAIN"
-          ]
-        },
-        {
-          "id": "0fe672aa-193a-4daa-9d35-46d99f52cefc",
+          "id": "d38d8a2e-583a-42f1-a503-af242e3794d6",
           "title": "asd",
-          "body": "asd",
-          "tags": [
-            "asd"
-          ]
-        }
-      ]
-    },
-    {
-      "id": "967e7d84-d9b2-4412-a585-927b0df27006",
-      "name": "asdasd",
-      "email": "kishorekasdasd@gmail.com",
-      "password": "$2b$10$g0pyWU.6KtqD1VXC7oW94etRq2.PVfelK./Lptw74mKI9jNlOfL.e",
-      "notes": []
-    },
-    {
-      "id": "084a3258-2afd-49ba-a1d6-4e5a9cc99eae",
-      "name": "AGAIN",
-      "email": "again@gmail.com",
-      "password": "$2b$10$JWMAxlNS39IXrZeZV8LdJOx9z/gDTY.t3VPH.4un0fHjutkALTaHK",
-      "notes": []
-    },
-    {
-      "id": "077f0d5a-d5ed-4ffb-b401-181a4c2a205d",
-      "name": "kishoreanother",
-      "email": "kishoreanother@gmail.com",
-      "password": "$2b$10$FSNBSF6rzkVa21gs.1vpoOGlFh1B/WQwZPjAAC.jF78YZie1BiYqi",
-      "notes": [
-        {
-          "id": "59f26078-30d3-44c3-804c-c7ce8ef89c17",
-          "title": "asd",
-          "body": "asd",
+          "body": "asdasdasd",
           "tags": [
             "asd"
           ]

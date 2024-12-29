@@ -4,6 +4,7 @@ import {
   EditUsersNote,
   DeleteUserNote,
   AddNotes,
+  getSpecificNote,
 } from "../Controllers/User";
 
 export const notesRoute = express.Router();
@@ -13,6 +14,8 @@ notesRoute.get("/user-detail/:id", GetAllDetailsOfUser);
 
 //@ts-ignore
 notesRoute.post("/add-note", AddNotes);
+
+notesRoute.get("/get-specific-note", getSpecificNote);
 
 //@ts-ignore
 notesRoute.post("/edit-note", EditUsersNote);

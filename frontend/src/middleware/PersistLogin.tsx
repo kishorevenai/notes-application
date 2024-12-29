@@ -15,12 +15,8 @@ const PersistLogin = () => {
     { data, isUninitialized, isSuccess, isError, isLoading, error },
   ] = useRefreshMutation();
 
-  console.log("TOKEN TESTING", token);
-
   useEffect(() => {
     const verifyRefreshToken = async () => {
-      console.log("Verifying refersh token");
-
       try {
         await refresh();
       } catch (error) {}

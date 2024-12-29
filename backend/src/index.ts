@@ -17,7 +17,7 @@ app.use("/author", userRoute);
 app.use("/login", userRoute);
 
 //@ts-ignore
-app.use(verifyJWT);
+// app.use(verifyJWT);
 
 app.use("/user", notesRoute);
 

@@ -9,7 +9,6 @@ const userRoute_1 = require("./routes/userRoute");
 const authRoute_1 = require("./routes/authRoute");
 const cookie_parser_1 = __importDefault(require("cookie-parser"));
 const cors_1 = __importDefault(require("cors"));
-const verifyJWT_1 = require("./Middleware/verifyJWT");
 const app = (0, express_1.default)();
 app.use((0, cors_1.default)());
 app.use(express_1.default.json());
@@ -18,7 +17,7 @@ app.use("/auth", authRoute_1.authRoute);
 app.use("/author", userRoute_1.userRoute);
 app.use("/login", userRoute_1.userRoute);
 //@ts-ignore
-app.use(verifyJWT_1.verifyJWT);
+// app.use(verifyJWT);
 app.use("/user", notesRoute_1.notesRoute);
 app.listen(3500, () => {
     console.log("The server running on port 3500");

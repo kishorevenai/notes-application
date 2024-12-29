@@ -40,8 +40,6 @@ const AllNotes = () => {
       };
     })();
 
-  console.log(filteredNotes);
-
   let content;
 
   if (isSuccess) {
@@ -56,17 +54,20 @@ const AllNotes = () => {
     <div className="flex h-full flex-col justify-start  items-center">
       <Header />
       <CreateNotes />
-      <div className="relative w-2/12 flex justify-center items-center">
-        <div className="w-[20px] h-[20px] flex absolute right-3 top-4 justify-center items-center">
-          <img className="w-full" src={searchIcon} title="search"></img>
+
+      {data?.ids.length !== 0 && (
+        <div className="relative w-2/12 flex justify-center items-center">
+          <div className="w-[20px] h-[20px] flex absolute right-3 top-4 justify-center items-center">
+            <img className="w-full" src={searchIcon} title="search"></img>
+          </div>
+          <input
+            className="border-2 border-black w-full h-[50px] pl-5 rounded-xl mb-3"
+            placeholder="Search"
+            onChange={handle_search}
+            value={search}
+          ></input>
         </div>
-        <input
-          className="border-2 border-black w-full h-[50px] pl-5 rounded-xl mb-3"
-          placeholder="Search"
-          onChange={handle_search}
-          value={search}
-        ></input>
-      </div>
+      )}
 
       <div className="overflow-y-auto w-8/12 mx-auto h-2/6">{content}</div>
     </div>
