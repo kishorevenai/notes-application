@@ -51,7 +51,7 @@ export const notesApiSlice = apiSlice.injectEndpoints({
         },
       ],
     }),
-    getSpecificNotes: builder.query({
+    getSpecificNotes: builder.mutation({
       query: ({ noteId, userId }) => ({
         url: `/user/get-specific-note/?noteId=${noteId}&userId=${userId}`,
         method: "GET",
@@ -80,7 +80,7 @@ export const {
   useSaveNotesMutation,
   useDeleteSpecificNoteMutation,
   useEditSpecificNoteMutation,
-  useGetSpecificNotesQuery,
+  useGetSpecificNotesMutation,
 } = notesApiSlice;
 
 export const selectNotesResult = notesApiSlice.endpoints.getAllNotes.select();

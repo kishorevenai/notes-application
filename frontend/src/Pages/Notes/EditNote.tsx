@@ -1,10 +1,10 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Addnote, User } from "../../types";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { Select } from "antd";
 import {
   useEditSpecificNoteMutation,
-  useGetSpecificNotesQuery,
+  useGetSpecificNotesMutation,
 } from "./NotesApiSlice";
 import useAuth from "../../hook/useAuth";
 import { notification } from "antd";
@@ -22,11 +22,8 @@ const EditNote = () => {
   const [editSpecificNote, { isLoading, isSuccess, isError, error }] =
     useEditSpecificNoteMutation();
 
-  const { data: Note, isSuccess: getSpecificNoteSuccess } =
-    useGetSpecificNotesQuery({
-      noteId: id,
-      userId: authDetails.id,
-    });
+  const [getSpecificNotes, { data: Note, isSuccess: getSpecificNoteSuccess }] =
+    useGetSpecificNotesMutation();
 
   const openNotification = (message: string, type: string) => {
     //@ts-ignore
@@ -42,8 +39,21 @@ const EditNote = () => {
     tags: getSpecificNoteSuccess ? Note.tags : [],
   });
 
+  const shouldFetchNote = useMemo(
+    () => id && authDetails?.id,
+    [id, authDetails?.id]
+  );
+
+  useEffect(() => {
+    getSpecificNotes({
+      noteId: id,
+      userId: authDetails.id,
+    });
+  }, [shouldFetchNote]);
+
   useEffect(() => {
     if (getSpecificNoteSuccess) {
+      console.log(Note);
       setNoteDetail({
         id: Note.id,
         title: Note.title,

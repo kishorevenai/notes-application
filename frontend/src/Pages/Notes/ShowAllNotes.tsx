@@ -36,6 +36,7 @@ const NoteCard = ({ note, noteId }) => {
     return {
       title: note.title.toUpperCase(),
       body: note.body,
+      tags: note.tags,
     };
   }, [note]);
 
@@ -54,6 +55,17 @@ const NoteCard = ({ note, noteId }) => {
       openNotification("Unable to delete the note", "error");
     }
   };
+
+  const TagComponent = noteDetails.tags.map((tag) => {
+    return (
+      <div
+        key={tag}
+        className="border-2 border-black px-3 py-1 rounded-[5px]"
+      >
+        {tag}
+      </div>
+    );
+  });
 
   return (
     <div className="w-11/12 h-fit relative mx-auto duration-150 border-2 rounded-xl px-5 py-1 mb-2 hover:shadow-xl">
@@ -85,6 +97,8 @@ const NoteCard = ({ note, noteId }) => {
       >
         {noteDetails.body}
       </textarea>
+
+      <div className="flex items-center flex-wrap gap-2">{TagComponent}</div>
     </div>
   );
 };

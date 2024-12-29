@@ -43,14 +43,12 @@ export const AddNotes = async (req: Request, res: Response) => {
 export const getSpecificNote = async (req: Request, res: Response) => {
   const { noteId, userId } = req.query;
 
-  console.log(noteId, "------------", userId);
-
   try {
-    const specificNote = await axios.get(
-      `http://localhost:3200/users/${userId}`
-    );
+    const specificNote = await axios.get(`http://localhost:3200/users`);
 
-    const note = specificNote.data.notes.find((notes) => notes.id === noteId);
+    const note = specificNote.data
+      .flatMap((user) => user.notes)
+      .find((note) => note.id === noteId);
 
     return res.status(200).json(note);
   } catch (error) {
@@ -63,8 +61,6 @@ export const getSpecificNote = async (req: Request, res: Response) => {
 export const EditUsersNote = async (req: Request, res: Response) => {
   const { userId, notesId } = req.query;
   const result: Note = req.body;
-
-  console.log("EDIT TESTING", userId, notesId, result);
 
   try {
     const notes = await axios.get(`http://localhost:3200/users/${userId}`);
@@ -80,8 +76,6 @@ export const EditUsersNote = async (req: Request, res: Response) => {
           }
         : note
     );
-
-    console.log("ASDASD", alterednote);
 
     await axios.put(`http://localhost:3200/users/${userId}`, {
       ...notes.data,

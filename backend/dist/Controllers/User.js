@@ -49,10 +49,11 @@ const AddNotes = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
 exports.AddNotes = AddNotes;
 const getSpecificNote = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { noteId, userId } = req.query;
-    console.log(noteId, "------------", userId);
     try {
-        const specificNote = yield axios_1.default.get(`http://localhost:3200/users/${userId}`);
-        const note = specificNote.data.notes.find((notes) => notes.id === noteId);
+        const specificNote = yield axios_1.default.get(`http://localhost:3200/users`);
+        const note = specificNote.data
+            .flatMap((user) => user.notes)
+            .find((note) => note.id === noteId);
         return res.status(200).json(note);
     }
     catch (error) {
@@ -65,12 +66,10 @@ exports.getSpecificNote = getSpecificNote;
 const EditUsersNote = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { userId, notesId } = req.query;
     const result = req.body;
-    console.log("EDIT TESTING", userId, notesId, result);
     try {
         const notes = yield axios_1.default.get(`http://localhost:3200/users/${userId}`);
         const alterednote = notes.data.notes.map((note) => note.id == notesId
             ? Object.assign(Object.assign({}, note), { id: notesId, title: result.title || note.title, body: result.body || note.body, tags: result.tags || note.tags }) : note);
-        console.log("ASDASD", alterednote);
         yield axios_1.default.put(`http://localhost:3200/users/${userId}`, Object.assign(Object.assign({}, notes.data), { notes: alterednote }));
         return res
             .json({

@@ -15,6 +15,7 @@ notesRoute.get("/user-detail/:id", GetAllDetailsOfUser);
 //@ts-ignore
 notesRoute.post("/add-note", AddNotes);
 
+//@ts-ignore
 notesRoute.get("/get-specific-note", getSpecificNote);
 
 //@ts-ignore
