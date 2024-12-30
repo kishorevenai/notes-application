@@ -8,15 +8,14 @@ import {
 } from "./NotesApiSlice";
 import useAuth from "../../hook/useAuth";
 import { notification } from "antd";
+import { SignellingManager } from "../../SignellingManager/SignellingManager";
 
 const EditNote = () => {
   const location = useLocation();
-
   const { id } = useParams();
   const [api, contextHolder] = notification.useNotification();
   const navigate = useNavigate();
   const specificNote: Addnote = location.state;
-
   const authDetails: User = useAuth();
 
   const [editSpecificNote, { isLoading, isSuccess, isError, error }] =
@@ -25,19 +24,27 @@ const EditNote = () => {
   const [getSpecificNotes, { data: Note, isSuccess: getSpecificNoteSuccess }] =
     useGetSpecificNotesMutation();
 
-  const openNotification = (message: string, type: string) => {
-    //@ts-ignore
-    api[type]({
-      message,
-    });
-  };
-
   const [noteDetail, setNoteDetail] = useState<Addnote>({
     id: getSpecificNoteSuccess ? Note.id : "",
     title: getSpecificNoteSuccess ? Note.title : "",
     body: getSpecificNoteSuccess ? Note.body : "",
     tags: getSpecificNoteSuccess ? Note.tags : [],
   });
+
+  useEffect(() => {
+    SignellingManager.getInstance().sendMessage({
+      type: "NOTEAUTHORSUBSCRIBE",
+      noteId: id,
+      userId: authDetails.id,
+      noteContent: noteDetail,
+    });
+  }, [noteDetail]);
+  const openNotification = (message: string, type: string) => {
+    //@ts-ignore
+    api[type]({
+      message,
+    });
+  };
 
   const shouldFetchNote = useMemo(
     () => id && authDetails?.id,

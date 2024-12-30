@@ -40,6 +40,20 @@ export const AddNotes = async (req: Request, res: Response) => {
   }
 };
 
+export const getAllUsersNotes = async (req: Response, res: Response) => {
+  const { userId } = req.query;
+
+  try {
+    const specificNote = await axios.get(
+      `http://localhost:3200/users/${userId}`
+    );
+
+    res.status(200).json({ Notes: specificNote.data.notes });
+  } catch (error) {
+    res.status(400).json({ message: "Unableto fetch the users notes" });
+  }
+};
+
 export const getSpecificNote = async (req: Request, res: Response) => {
   const { noteId, userId } = req.query;
 

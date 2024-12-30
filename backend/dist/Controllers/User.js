@@ -12,7 +12,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.DeleteUserNote = exports.EditUsersNote = exports.getSpecificNote = exports.AddNotes = exports.GetAllDetailsOfUser = void 0;
+exports.DeleteUserNote = exports.EditUsersNote = exports.getSpecificNote = exports.getAllUsersNotes = exports.AddNotes = exports.GetAllDetailsOfUser = void 0;
 const axios_1 = __importDefault(require("axios"));
 const GetAllDetailsOfUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { id } = req.params;
@@ -47,6 +47,17 @@ const AddNotes = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     }
 });
 exports.AddNotes = AddNotes;
+const getAllUsersNotes = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const { userId } = req.query;
+    try {
+        const specificNote = yield axios_1.default.get(`http://localhost:3200/users/${userId}`);
+        res.status(200).json({ Notes: specificNote.data.notes });
+    }
+    catch (error) {
+        res.status(400).json({ message: "Unableto fetch the users notes" });
+    }
+});
+exports.getAllUsersNotes = getAllUsersNotes;
 const getSpecificNote = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { noteId, userId } = req.query;
     try {

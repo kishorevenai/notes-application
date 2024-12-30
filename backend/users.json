@@ -9,18 +9,13 @@
           "id": 101,
           "title": "Meeting Notes",
           "body": "Discuss project milestones and set deadlines.",
-          "tags": [
-            "meeting",
-            "project"
-          ]
+          "tags": ["meeting", "project"]
         },
         {
           "id": 10,
           "title": "CHECKING FINAL",
           "body": "CHECKING BODY",
-          "tags": [
-            "FINALLY RICH , HAHAHAHA"
-          ]
+          "tags": ["FINALLY RICH , HAHAHAHA"]
         }
       ]
     },
@@ -33,19 +28,13 @@
           "id": 201,
           "title": "Shopping List",
           "body": "Milk, Bread, Eggs, Butter, Coffee",
-          "tags": [
-            "shopping",
-            "groceries"
-          ]
+          "tags": ["shopping", "groceries"]
         },
         {
           "id": 202,
           "title": "Recipe: Pasta Alfredo",
           "body": "Ingredients: pasta, cream, garlic, parmesan cheese. Steps: Cook pasta, make sauce, mix.",
-          "tags": [
-            "cooking",
-            "recipe"
-          ]
+          "tags": ["cooking", "recipe"]
         }
       ]
     },
@@ -58,19 +47,13 @@
           "id": 301,
           "title": "Workout Plan",
           "body": "Run 5km, 30 push-ups, 20 squats, 15 burpees.",
-          "tags": [
-            "fitness",
-            "health"
-          ]
+          "tags": ["fitness", "health"]
         },
         {
           "id": 302,
           "title": "Daily Journal",
           "body": "Reflected on today's events and lessons learned.",
-          "tags": [
-            "journal",
-            "personal"
-          ]
+          "tags": ["journal", "personal"]
         }
       ]
     },
@@ -84,28 +67,19 @@
           "id": "d38d8a2e-583a-42f1-a503-af242e3794d6",
           "title": "TESTING FROM GOD",
           "body": "SUCCasdESSFULLY PASSED",
-          "tags": [
-            "asd",
-            "qdcqwd",
-            "asda",
-            "SUCCESS"
-          ]
+          "tags": ["asd", "qdcqwd", "asda", "SUCCESS"]
         },
         {
           "id": "af31c0aa-15d0-42d3-b44a-0a929aa5e3a1",
           "title": "asdasd",
           "body": "asdasdasd",
-          "tags": [
-            "asdasd"
-          ]
+          "tags": ["asdasd"]
         },
         {
           "id": "52604f73-61c5-47f5-896b-0d2bad057313",
           "title": "asd",
           "body": "asd",
-          "tags": [
-            "asdasd"
-          ]
+          "tags": ["asdasd"]
         }
       ]
     },
@@ -119,9 +93,7 @@
           "id": "cbdcfd7c-0228-4100-9123-e481bbc90bcf",
           "title": "asdasd",
           "body": "asdasd",
-          "tags": [
-            "asdasd"
-          ]
+          "tags": ["asdasd"]
         }
       ]
     },

@@ -37,6 +37,11 @@ export class SignellingManager {
       console.log(JSON.parse(event.data));
       const message = JSON.parse(event.data);
 
+      if (message.type === "NOTETYPE") {
+        this.callbacks[message.type].map((callback) => {
+          callback(message.data);
+        });
+      }
       if (message.type === "ACTIVEUSERS") {
         this.callbacks[message.type].map((callback) => {
           callback(message.users);
@@ -45,7 +50,7 @@ export class SignellingManager {
     };
   }
 
-  sendMessage(message: IncomeMessage) {
+  sendMessage(message: IncomeMessage | any) {
     if (!this.initialized) {
       this.bufferMessage.push(message);
       return;

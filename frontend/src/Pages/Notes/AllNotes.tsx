@@ -7,13 +7,12 @@ import Header from "../../Components/Header";
 import { useState, useRef, useEffect } from "react";
 import searchIcon from "../../assets/searchIcon.svg";
 import { SignellingManager } from "../../SignellingManager/SignellingManager";
+import { Link } from "react-router-dom";
 
 const AllNotes = () => {
   const userDetail: User = useAuth();
   const [search, setSearch] = useState<string>("");
   const [users, setUsers] = useState([]);
-
-  console.log("CHECKING ALL THE USERS", users);
 
   useEffect(() => {
     SignellingManager.getInstance().registerCallback({
@@ -92,18 +91,23 @@ const AllNotes = () => {
           <div className="overflow-y-auto w-full mx-auto h-2/6">{content}</div>
         </div>
         <div className="border-2 border-black aspect-square w-2/12 h-5/6 rounded-[10px]">
+          <p className="text-center mb-5 border-b-2 border-black">
+            Users live:
+          </p>
           {users.length === 0 ? (
             <p className="text-center">No users online yet</p>
           ) : (
             users.map((eachUser) => {
               if (userDetail.name !== eachUser.username) {
                 return (
-                  <div className="w-3/12 mx-auto flex justify-between items-center mb-2">
-                    <p className="text-[10px]" key={eachUser.id}>
-                      {eachUser.username}
-                    </p>
-                    <div className="w-[10px] aspect-square bg-green-300 rounded-full"></div>
-                  </div>
+                  <Link to={`/UsersNote/${eachUser.id}`}>
+                    <div className="w-3/12 mx-auto flex justify-between items-center mb-2">
+                      <p className="text-[10px]" key={eachUser.id}>
+                        {eachUser.username}
+                      </p>
+                      <div className="w-[10px] aspect-square bg-green-300 rounded-full"></div>
+                    </div>
+                  </Link>
                 );
               }
             })

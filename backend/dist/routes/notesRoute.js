@@ -12,6 +12,8 @@ exports.notesRoute.get("/user-detail/:id", User_1.GetAllDetailsOfUser);
 //@ts-ignore
 exports.notesRoute.post("/add-note", User_1.AddNotes);
 //@ts-ignore
+exports.notesRoute.get("/get-all-users-notes", User_1.getAllUsersNotes);
+//@ts-ignore
 exports.notesRoute.get("/get-specific-note", User_1.getSpecificNote);
 //@ts-ignore
 exports.notesRoute.post("/edit-note", User_1.EditUsersNote);

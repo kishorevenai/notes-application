@@ -22,7 +22,8 @@ export type User = {
 
 export type IncomeMessage = {
   type: string;
-  id: string | Number;
-  username: string;
+  remoteId?: string;
+  id: string | Number | undefined;
+  username?: string;
   ws?: WebSocket;
 };
