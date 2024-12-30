@@ -7,9 +7,17 @@ import cors from "cors";
 import { verifyJWT } from "./Middleware/verifyJWT";
 const app = express();
 
-app.use(cors());
-app.use(express.json());
 app.use(cookieparser());
+app.use(
+  cors({
+    origin: "http://localhost:5173", // Replace with your frontend's URL
+    credentials: true, // Allows cookies and credentials to be sent
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+  })
+);
+
+app.use(express.json());
 
 app.use("/auth", authRoute);
 

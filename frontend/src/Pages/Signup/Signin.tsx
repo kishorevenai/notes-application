@@ -38,7 +38,7 @@ const Signin = () => {
       console.log(data);
 
       dispatch(setUserCredentials({ accessToken: data }));
-      localStorage.setItem("accessToken", data);
+      sessionStorage.setItem("accessToken", data);
       navigate("/Notes");
     } catch (error: any) {
       if (error.status === 401) {

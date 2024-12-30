@@ -3,14 +3,14 @@ import { setUserCredentials } from "../../Pages/Login/authSlice";
 
 const baseQuery = fetchBaseQuery({
   baseUrl: "http://localhost:3500",
-  // credentials: "omit",
+  credentials: "include",
   prepareHeaders: (headers, { getState }) => {
     const token = getState().auth.token;
 
     if (token) {
       headers.set(
         "Authorization",
-        `Bearer ${localStorage.getItem("accessToken") ?? token}`
+        `Bearer ${sessionStorage.getItem("accessToken") ?? token}`
       );
     }
 

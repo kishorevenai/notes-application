@@ -8,8 +8,6 @@ import { Link } from "react-router-dom";
 const PersistLogin = () => {
   const token = useSelector(selectCurrentToken);
 
-  const [trueSuccess, setTrueSuccess] = useState(false);
-
   const [
     refresh,
     { data, isUninitialized, isSuccess, isError, isLoading, error },
@@ -19,11 +17,15 @@ const PersistLogin = () => {
     const verifyRefreshToken = async () => {
       try {
         await refresh();
-      } catch (error) {}
+      } catch (error) {
+        console.log(error);
+      }
     };
 
-    if (token === null) verifyRefreshToken();
+    if (!token && isUninitialized) verifyRefreshToken();
   }, []);
+
+  console.log("TESTING THE TOKEN");
 
   let content = <Outlet />;
 

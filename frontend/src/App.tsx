@@ -1,7 +1,7 @@
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import AllNotes from "./Pages/Notes/AllNotes";
-import { PrefetchNotes } from "./Pages/Notes/PrefetchNotes";
+import WsConnection from "./middleware/wsConnection";
 import Layout from "./Layout/Layout";
 import EditNote from "./Pages/Notes/EditNote";
 import Signin from "./Pages/Signup/Signin";

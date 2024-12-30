@@ -6,7 +6,7 @@ export const refresh = async (req: Request, res: Response) => {
   console.log("CHECKING COMING HERE");
   const cookie = req.cookies;
 
-  console.log(cookie);
+  console.log("COOKIE", cookie?.jwt);
 
   if (!cookie?.jwt) return res.status(400).json({ message: "Unauthorized" });
 

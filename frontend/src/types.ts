@@ -19,3 +19,10 @@ export type User = {
   password: string;
   notes: Note[];
 };
+
+export type IncomeMessage = {
+  type: string;
+  id: string | Number;
+  username: string;
+  ws?: WebSocket;
+};

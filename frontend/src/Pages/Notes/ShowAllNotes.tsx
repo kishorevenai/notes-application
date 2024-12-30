@@ -18,7 +18,7 @@ const ShowAllNotes = ({ notes }: { notes: Addnote[] }) => {
     content = <p className="text-[15px]">Notes That You Add Appear Here</p>;
   }
 
-  return <div className="w-8/12 mx-auto h-fit">{content}</div>;
+  return <div className="w-full mx-auto h-fit flex flex-col justify-start items-start">{content}</div>;
 };
 
 const NoteCard = ({ note, noteId }) => {

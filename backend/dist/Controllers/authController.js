@@ -18,7 +18,7 @@ const axios_1 = __importDefault(require("axios"));
 const refresh = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     console.log("CHECKING COMING HERE");
     const cookie = req.cookies;
-    console.log(cookie);
+    console.log("COOKIE", cookie === null || cookie === void 0 ? void 0 : cookie.jwt);
     if (!(cookie === null || cookie === void 0 ? void 0 : cookie.jwt))
         return res.status(400).json({ message: "Unauthorized" });
     const refreshToken = cookie.jwt;
