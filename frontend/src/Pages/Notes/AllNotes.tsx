@@ -71,7 +71,7 @@ const AllNotes = () => {
     <div className="flex h-full flex-col justify-start  items-center">
       <Header />
       <div className="w-11/12 h-full mx-auto flex justify-between items-center ">
-        <div className="w-6/12 h-full flex flex-col justify-start items-center">
+        <div className="w-6/12 min-w-[500px] border-2 h-full flex flex-col justify-start items-center">
           <CreateNotes />
 
           {data?.ids.length !== 0 && (
@@ -90,7 +90,7 @@ const AllNotes = () => {
 
           <div className="overflow-y-auto w-full mx-auto h-2/6">{content}</div>
         </div>
-        <div className="border-2 border-black aspect-square w-2/12 h-5/6 rounded-[10px]">
+        <div className="border-2 border-black aspect-square w-[200px] h-5/6 rounded-[10px]">
           <p className="text-center mb-5 border-b-2 border-black">
             Users live:
           </p>

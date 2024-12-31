@@ -9,13 +9,18 @@
           "id": 101,
           "title": "Meeting Notes",
           "body": "Discuss project milestones and set deadlines.",
-          "tags": ["meeting", "project"]
+          "tags": [
+            "meeting",
+            "project"
+          ]
         },
         {
           "id": 10,
           "title": "CHECKING FINAL",
           "body": "CHECKING BODY",
-          "tags": ["FINALLY RICH , HAHAHAHA"]
+          "tags": [
+            "FINALLY RICH , HAHAHAHA"
+          ]
         }
       ]
     },
@@ -28,13 +33,19 @@
           "id": 201,
           "title": "Shopping List",
           "body": "Milk, Bread, Eggs, Butter, Coffee",
-          "tags": ["shopping", "groceries"]
+          "tags": [
+            "shopping",
+            "groceries"
+          ]
         },
         {
           "id": 202,
           "title": "Recipe: Pasta Alfredo",
           "body": "Ingredients: pasta, cream, garlic, parmesan cheese. Steps: Cook pasta, make sauce, mix.",
-          "tags": ["cooking", "recipe"]
+          "tags": [
+            "cooking",
+            "recipe"
+          ]
         }
       ]
     },
@@ -47,13 +58,19 @@
           "id": 301,
           "title": "Workout Plan",
           "body": "Run 5km, 30 push-ups, 20 squats, 15 burpees.",
-          "tags": ["fitness", "health"]
+          "tags": [
+            "fitness",
+            "health"
+          ]
         },
         {
           "id": 302,
           "title": "Daily Journal",
           "body": "Reflected on today's events and lessons learned.",
-          "tags": ["journal", "personal"]
+          "tags": [
+            "journal",
+            "personal"
+          ]
         }
       ]
     },
@@ -64,22 +81,22 @@
       "password": "$2b$10$XFA0ALNR7oAwEG7kdgHHQuwOhz05/kHRzv8pnZckqJ2LHUdVu6UM6",
       "notes": [
         {
-          "id": "d38d8a2e-583a-42f1-a503-af242e3794d6",
-          "title": "TESTING FROM GOD",
-          "body": "SUCCasdESSFULLY PASSED",
-          "tags": ["asd", "qdcqwd", "asda", "SUCCESS"]
+          "id": "e5d003e0-7f35-45bc-8cd1-3a935e138e4f",
+          "title": "Sample text here",
+          "body": "Sample text here",
+          "tags": [
+            "tag1",
+            "tag2",
+            "tag3"
+          ]
         },
         {
-          "id": "af31c0aa-15d0-42d3-b44a-0a929aa5e3a1",
-          "title": "asdasd",
-          "body": "asdasdasd",
-          "tags": ["asdasd"]
-        },
-        {
-          "id": "52604f73-61c5-47f5-896b-0d2bad057313",
-          "title": "asd",
-          "body": "asd",
-          "tags": ["asdasd"]
+          "id": "f53f469c-6f88-4b89-9157-ec77e89f281b",
+          "title": "kishore is typing",
+          "body": "kishore is typing",
+          "tags": [
+            "kkkk"
+          ]
         }
       ]
     },
@@ -90,10 +107,14 @@
       "password": "$2b$10$h9c.Odhm3UbT4Wze3v3uBOjACVFsXbTQYSNvvscgK3b4rnx4fME72",
       "notes": [
         {
-          "id": "cbdcfd7c-0228-4100-9123-e481bbc90bcf",
-          "title": "asdasd",
-          "body": "asdasd",
-          "tags": ["asdasd"]
+          "id": "a7f1daa1-5706-4074-8988-65d9f3f3d908",
+          "title": "person one",
+          "body": "person note 1",
+          "tags": [
+            "tag1",
+            "tag2",
+            "tag3"
+          ]
         }
       ]
     },

@@ -18,7 +18,11 @@ const ShowAllNotes = ({ notes }: { notes: Addnote[] }) => {
     content = <p className="text-[15px]">Notes That You Add Appear Here</p>;
   }
 
-  return <div className="w-full mx-auto h-fit flex flex-col justify-start items-start">{content}</div>;
+  return (
+    <div className="min-w-[400px] w-full mx-auto h-fit flex flex-col justify-start items-start">
+      {content}
+    </div>
+  );
 };
 
 const NoteCard = ({ note, noteId }) => {
@@ -58,10 +62,7 @@ const NoteCard = ({ note, noteId }) => {
 
   const TagComponent = noteDetails.tags.map((tag) => {
     return (
-      <div
-        key={tag}
-        className="border-2 border-black px-3 py-1 rounded-[5px]"
-      >
+      <div key={tag} className="border-2 border-black px-3 py-1 rounded-[5px]">
         {tag}
       </div>
     );
