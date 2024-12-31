@@ -4,13 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "node dist/index.js"
+    "dev": "nodemon dist/index.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "@types/ws": "^8.5.13",
+    "nodemon": "^3.1.9",
     "ws": "^8.18.0"
   }
 }
